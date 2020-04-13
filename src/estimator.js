@@ -47,6 +47,7 @@ const covid19ImpactEstimator = (data) => {
     // challenge 2
     // estimateSevereCases({ impact, severeImpact });
     // estimateBedSpaceAvailability({ data, impact, severeImpact });
+    return { data, impact, severeImpact };
   };
   return estimator({
     data,
