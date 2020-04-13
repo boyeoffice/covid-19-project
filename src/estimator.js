@@ -29,7 +29,7 @@ const estimateSevereCases = ({ impact, severeImpact }) => {
   );
   return { impact, severeImpact };
 };
-/** const estimateBedSpaceAvailability = (data, impact, severeImpact) => {
+const estimateBedSpaceAvailability = (data, impact, severeImpact) => {
   impact.hospitalBedsByRequestedTime = Math.trunc(
     (0.35 * data.totalHospitalBeds) - impact.severeCasesByRequestedTime
   );
@@ -37,7 +37,7 @@ const estimateSevereCases = ({ impact, severeImpact }) => {
     (0.35 * data.totalHospitalBeds) - severeImpact.severeCasesByRequestedTime
   );
   return { impact, severeImpact };
-}; */
+};
 
 const covid19ImpactEstimator = (data) => {
   const estimator = ({ impact, severeImpact }) => {
@@ -46,7 +46,7 @@ const covid19ImpactEstimator = (data) => {
     estimateProjectedInfections({ data, impact, severeImpact });
     // challenge 2
     estimateSevereCases({ impact, severeImpact });
-    // estimateBedSpaceAvailability({ data, impact, severeImpact });
+    estimateBedSpaceAvailability({ data, impact, severeImpact });
     return { data, impact, severeImpact };
   };
   return estimator({
