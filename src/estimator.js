@@ -29,24 +29,10 @@ const estimateSevereCases = ({ impact, severeImpact }) => {
   return { impact, severeImpact };
 };
 const estimateBedSpaceAvailability = (data, impact, severeImpact) => {
-  const time = () => {
-    switch (data.periodType) {
-      case 'months':
-        return data.timeToElapse * 30;
-      case 'weeks':
-        return data.timeToElapse * 7;
-      default:
-        return data.timeToElapse;
-    }
-  };
-  const reported = data.reportedCases * 10;
-  const factor = 2 ** Math.trunc(time() / 3);
-  const current = 50 * data.reportedCases;
-  const severe = 0.15 * (factor * reported);
-  const availableBeds = data.totalHospitalBeds - (0.65 * data.totalHospitalBeds);
-  const requiredBeds = Math.trunc(availableBeds - (severe));
-  impact.hospitalBedsByRequestedTime = requiredBeds;
-  severeImpact.hospitalBedsByRequestedTime = Math.trunc(availableBeds - (0.15 * factor * current));
+  impact.hospitalBedsByRequestedTime = Math.trunc((0.35 * data.totalHospitalBeds)
+  - impact.severeCasesByRequestedTime);
+  severeImpact.hospitalBedsByRequestedTime = Math.trunc((0.35 * data.totalHospitalBeds)
+  - severeImpact.severeCasesByRequestedTime);
   return { impact, severeImpact };
 };
 
