@@ -31,10 +31,10 @@ const estimateSevereCases = ({ impact, severeImpact }) => {
 };
 const estimateBedSpaceAvailability = (data, impact, severeImpact) => {
   impact.hospitalBedsByRequestedTime = Math.trunc(
-    (0.35 * data.totalHospitalBeds) - impact.severeCasesByRequestedTime
+    (0.35 * data.totalHospitalBeds) - impact.estimateSevereCases
   );
   severeImpact.hospitalBedsByRequestedTime = Math.trunc(
-    (0.35 * data.totalHospitalBeds) - severeImpact.severeCasesByRequestedTime
+    (0.35 * data.totalHospitalBeds) - severeImpact.estimateSevereCases
   );
   return { impact, severeImpact };
 };
