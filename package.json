@@ -5,7 +5,9 @@
   "license": "MIT",
   "private": false,
   "scripts": {
-    "lint": "eslint ./src/"
+    "lint": "eslint ./src/",
+    "start": "node ./backend/index.js",
+    "dev": "nodemon .backend/index.js"
   },
   "dependencies": {
     "on-covid-19": "^0.1.3"
